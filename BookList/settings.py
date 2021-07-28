@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from BookList.local_settings import secret_key,database
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secret_key
+SECRET_KEY = 'django-insecure--41s69-dqv20^ahnvn&m#a$+8=&37o)@5&ekyjf2oihq5$&38f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1:8000']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -83,7 +82,14 @@ WSGI_APPLICATION = 'BookList.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': database
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'BookList3',
+        'USER': 'postgres',
+        'PASSWORD': 'user1234',
+        'HOST': '127.0.0.1',
+        'PORT': '5432'
+    }
 }
 
 
