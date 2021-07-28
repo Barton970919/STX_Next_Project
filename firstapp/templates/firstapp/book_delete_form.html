@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Delete Book{% endblock %}
+{% block content %}
+<div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <form method="post">
+        {% csrf_token %}
+        <p style="text-align: center">Are you sure you want to delete </p>
+        <p style="text-align: center">'{{ object.title }}' by {{ object.authors }} ?</p>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <input type="submit" value="Confirm">
+        </div>
+    </form>
+</div>
+{% endblock %}

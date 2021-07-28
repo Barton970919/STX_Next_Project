@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %}Add New Book{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-6">
+            <fieldset>
+            <legend style="
+            padding: .5rem;
+            color: #0d6efd;
+            font-weight: bold;
+            text-align: center;
+            border:#0d6efd ">ADD NEW BOOK</legend>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form.visible_fields %}
+                        <div class="form-floating mb-3">
+                            {% if field.name == 'published_date' %}
+                                {% render_field field|attr:"type:date" class="form-control" %}
+                            {% else %}
+                                {% render_field field class="form-control" %}
+                            {% endif %}
+                            <label for="{{ field.name }}">{{ field.name }}</label>
+                        </div>
+                            <div class="invalid-feedback">
+                                {{ field.errors }}
+                            </div>
+                    {% endfor %}
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-primary" type="submit">Add new book</button>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
